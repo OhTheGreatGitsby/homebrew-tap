@@ -7,7 +7,7 @@ cask "slickwallpapers" do
   desc "Smooth, animated wallpaper selector"
   homepage "https://github.com/OhTheGreatGitsby/SlickWallpapers"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "SlickWallpapers.app"
 
