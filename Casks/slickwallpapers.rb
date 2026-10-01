@@ -11,10 +11,11 @@ cask "slickwallpapers" do
 
   app "SlickWallpapers.app"
 
-  # The app is ad-hoc signed, not notarized.
-  postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/SlickWallpapers.app"]
-  end
+  caveats <<~EOS
+    SlickWallpapers is not notarized by Apple. If macOS blocks it on first launch, open
+    System Settings › Privacy & Security and click "Open Anyway", or run:
+      xattr -dr com.apple.quarantine "#{appdir}/SlickWallpapers.app"
+  EOS
 
   uninstall quit: "io.github.ohthegreatgitsby.slickwallpapers"
 
